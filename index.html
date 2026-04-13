@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Aadity Varma | Application Tech Support & QA Automation</title>
+    <!-- Google Fonts & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+		.profile-img {
+margin-left: 50px;				}
+
+				.profile-img img {
+					width: 3.5cm;
+					height: 4.5cm;
+					object-fit: cover;
+					border: 1px solid #999;
+				}
+        :root {
+            --bg-body: #eef2f5;
+            --card-bg: #ffffff;
+            --sidebar-bg: #f9fbfd;
+            --text-primary: #1e2a3e;
+            --text-secondary: #2c3e50;
+            --text-muted: #5a6e7c;
+            --accent: #2266c7;
+            --accent-soft: #e9eff7;
+            --border-light: #e2e8f0;
+            --shadow-sm: 0 8px 20px rgba(0, 0, 0, 0.03), 0 2px 6px rgba(0, 0, 0, 0.05);
+            --badge-bg: #eef2ff;
+            --badge-text: #1e4a7a;
+            --header-border: #cbd5e1;
+        }
+
+        body.dark {
+            --bg-body: #121826;
+            --card-bg: #1e293b;
+            --sidebar-bg: #0f172a;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+            --accent: #3b82f6;
+            --accent-soft: #1e293b;
+            --border-light: #334155;
+            --badge-bg: #2d3a5e;
+            --badge-text: #b9d0f0;
+            --header-border: #334155;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-primary);
+            line-height: 1.45;
+            transition: background 0.2s ease, color 0.2s;
+            padding: 2rem 1.5rem;
+        }
+
+        .resume-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-radius: 28px;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: background 0.2s;
+        }
+
+        /* grid layout */
+        .resume-grid {
+            display: grid;
+            grid-template-columns: 34% 66%;
+        }
+
+        /* SIDEBAR STYLES */
+        .sidebar {
+            background-color: var(--sidebar-bg);
+            padding: 2rem 1.6rem;
+            border-right: 1px solid var(--border-light);
+            height: 100%;
+        }
+
+        .profile-name {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            background: linear-gradient(135deg, var(--accent) 0%, #2b6bb0 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-title {
+            font-size: 0.9rem;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            border-left: 3px solid var(--accent);
+            padding-left: 0.75rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 0.85rem;
+            margin-bottom: 0.9rem;
+            color: var(--text-secondary);
+            word-break: break-all;
+        }
+
+        .contact-item i {
+            width: 1.4rem;
+            color: var(--accent);
+            font-size: 1rem;
+        }
+
+        .contact-item a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .contact-item a:hover {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin: 1.6rem 0 1rem 0;
+            letter-spacing: -0.2px;
+            border-bottom: 2px solid var(--accent);
+            display: inline-block;
+            padding-bottom: 0.25rem;
+        }
+
+        .skill-category {
+            margin-bottom: 1.3rem;
+        }
+
+        .skill-category h4 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            padding: 0.25rem 0.7rem;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .cert-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .cert-list li {
+            font-size: 0.8rem;
+            margin-bottom: 0.65rem;
+            display: flex;
+            align-items: baseline;
+            gap: 0.6rem;
+        }
+
+        .cert-list li i {
+            color: var(--accent);
+            font-size: 0.75rem;
+            width: 1.2rem;
+        }
+
+        /* MAIN CONTENT */
+        .main-content {
+            padding: 2rem 2rem 2rem 2rem;
+        }
+
+        .summary-text {
+            background: var(--accent-soft);
+            padding: 1.2rem 1.4rem;
+            border-radius: 18px;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            color: var(--text-secondary);
+            border-left: 3px solid var(--accent);
+        }
+
+        .exp-item, .project-item, .edu-item {
+            margin-bottom: 1.6rem;
+        }
+
+        .exp-header, .project-header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.4rem;
+        }
+
+        .exp-title {
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--text-primary);
+        }
+
+        .exp-company {
+            font-weight: 600;
+            color: var(--accent);
+            font-size: 0.9rem;
+        }
+
+        .exp-date {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .exp-desc {
+            padding-left: 0.2rem;
+            margin-top: 0.5rem;
+        }
+
+        .exp-desc ul, .project-desc ul {
+            padding-left: 1.2rem;
+            list-style-type: disc;
+        }
+
+        .exp-desc li, .project-desc li {
+            font-size: 0.85rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-secondary);
+            line-height: 1.45;
+        }
+
+        .project-desc {
+            margin-top: 0.3rem;
+        }
+
+        .edu-detail {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 0.2rem;
+        }
+
+        .edu-degree {
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .edu-date {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .edu-institute {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 0.3rem;
+        }
+
+        .declaration {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px dashed var(--border-light);
+            font-size: 0.75rem;
+            font-style: italic;
+            color: var(--text-muted);
+            text-align: center;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-light);
+            border-radius: 60px;
+            padding: 0.7rem 1rem;
+            cursor: pointer;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            z-index: 100;
+            transition: all 0.2s;
+            backdrop-filter: blur(4px);
+        }
+
+        .theme-toggle i {
+            font-size: 1rem;
+            color: var(--accent);
+        }
+
+        @media (max-width: 780px) {
+            body {
+                padding: 1rem;
+            }
+            .resume-grid {
+                grid-template-columns: 1fr;
+            }
+            .sidebar {
+                border-right: none;
+                border-bottom: 1px solid var(--border-light);
+            }
+            .theme-toggle {
+                bottom: 15px;
+                right: 15px;
+                padding: 0.5rem 0.9rem;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .theme-toggle {
+                display: none;
+            }
+            .resume-wrapper {
+                box-shadow: none;
+                border-radius: 0;
+            }
+            .sidebar, .main-content {
+                break-inside: avoid;
+            }
+            .skill-tag {
+                background: #eef2ff;
+                color: black;
+            }
+        }
+
+        a {
+            text-decoration: none;
+        }
+        .badge-icon {
+            margin-right: 0.3rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="resume-wrapper">
+        <div class="resume-grid">
+            <!-- SIDEBAR : Contact, Skills, Certifications -->
+            <aside class="sidebar">
+			<div class="profile-img">
+				<img src="profile-pic.png" alt="Profile Photo">
+				</div>
+                <div class="profile-name">AADITY VARMA</div>
+                <div class="profile-title">Application Tech Support | QA Automation</div>
+                
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <a href="tel:+917091148062">+91 70911 48062</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:vermaaadity14s@gmail.com">vermaaadity14s@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-linkedin"></i>
+                    <a href="https://www.linkedin.com/in/aadity-varma-s7091148062/" target="_blank" rel="noopener">linkedin.com/in/aadity-varma</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-github"></i>
+                    <a href="https://github.com/Aadi7091" target="_blank" rel="noopener">github.com/Aadi7091</a>
+                </div>
+
+                <!-- SKILLS grouped -->
+                <div class="section-title">Core Competencies</div>
+                
+                <div class="skill-category">
+                    <h4>🛠️ Service Desk & Support</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Service Desk (Basic)</span>
+                        <span class="skill-tag">Incident Management</span>
+                        <span class="skill-tag">Problem Management</span>
+                        <span class="skill-tag">ServiceNow (Basic)</span>
+                        <span class="skill-tag">SLA Awareness</span>
+                        <span class="skill-tag">Remote Troubleshooting</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h4>💻 Technical Skills</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">C/C++</span>
+                        <span class="skill-tag">HTML/CSS/JS</span>
+                        <span class="skill-tag">PHP</span>
+                        <span class="skill-tag">Selenium WebDriver</span>
+                        <span class="skill-tag">PyTest</span>
+                        <span class="skill-tag">REST APIs</span>
+                        <span class="skill-tag">MySQL</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h4>🔧 Tools & Analytics</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">GitHub</span>
+                        <span class="skill-tag">VS Code</span>
+                        <span class="skill-tag">MS Excel</span>
+                        <span class="skill-tag">Power BI</span>
+                        <span class="skill-tag">MS Office</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h4>🤝 Soft Skills</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Voice & Written Comm.</span>
+                        <span class="skill-tag">Problem Solving</span>
+                        <span class="skill-tag">Customer Handling</span>
+                        <span class="skill-tag">Team Collaboration</span>
+                        <span class="skill-tag">Adaptability</span>
+                    </div>
+                </div>
+
+                <div class="section-title">Certifications</div>
+                <ul class="cert-list">
+                    <li><i class="fas fa-certificate"></i> Cisco – Introduction to Networks</li>
+                    <li><i class="fas fa-microchip"></i> IEEE Mentor Certification</li>
+                    <li><i class="fas fa-satellite"></i> ISRO – Space Science & Tech Awareness</li>
+                </ul>
+            </aside>
+
+            <!-- MAIN: Summary, Experience, Projects, Education, Declaration -->
+            <main class="main-content">
+                <!-- Professional Summary -->
+                <div class="summary-text">
+                    <strong>📌 Professional Summary</strong><br>
+                    Motivated and detail-oriented BCA student with hands-on experience in QA automation and application troubleshooting. Skilled in incident handling, ticketing workflows, and client communication. Adept at resolving technical issues, supporting system operations, and ensuring service quality. Seeking an Application Tech Support role to deliver efficient user support and maintain system reliability.
+                </div>
+
+                <!-- Internship Experience Section -->
+                <div class="section-title">💼 Internship Experience</div>
+                
+                <div class="exp-item">
+                    <div class="exp-header">
+                        <span class="exp-title">QA Automation Tester Intern</span>
+                        <span class="exp-date">Jun 2025 – Aug 2025</span>
+                    </div>
+                    <div class="exp-company">HFCL, Gurugram</div>
+                    <div class="exp-desc">
+                        <ul>
+                            <li>Tested and troubleshot real-time dashboard applications (UcNMS), logging issues via structured workflows similar to ticketing systems.</li>
+                            <li>Performed API testing and validated backend responses, ensuring system integrity & SLA awareness.</li>
+                            <li>Collaborated with development teams to resolve application and system-related issues, accelerating bug fixes.</li>
+                            <li>Gained exposure to incident management lifecycle and SLA-based resolution, improving overall reliability.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="exp-item">
+                    <div class="exp-header">
+                        <span class="exp-title">AI & Data Analytics Intern</span>
+                        <span class="exp-date">Apr 2025</span>
+                    </div>
+                    <div class="exp-company">Edunet Foundation (Shell India Program)</div>
+                    <div class="exp-desc">
+                        <ul>
+                            <li>Analyzed large datasets and generated actionable insights using Python (Pandas, Matplotlib).</li>
+                            <li>Performed data cleaning, visualization, and reporting, enhancing decision-making efficiency.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Projects Section -->
+                <div class="section-title">🚀 Projects</div>
+                
+                <div class="project-item">
+                    <div class="exp-header">
+                        <span class="exp-title">UcNMS Dashboard Automation</span>
+                    </div>
+                    <div class="project-desc">
+                        <ul>
+                            <li>Automated test cases for login, dashboard, and device management features using Selenium & PyTest.</li>
+                            <li>Identified system issues and ensured proper tracking/resolution within ticketing workflows.</li>
+                            <li>Reduced manual testing effort by 35% and improved regression efficiency.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <div class="exp-header">
+                        <span class="exp-title">Email Spam Detection System</span>
+                    </div>
+                    <div class="project-desc">
+                        <ul>
+                            <li>Developed ML model using NLP techniques for spam classification (Naive Bayes & Logistic Regression).</li>
+                            <li>Achieved high accuracy in filtering spam, showcasing analytical & Python skills.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <div class="exp-header">
+                        <span class="exp-title">Agriculture Data Analysis (India)</span>
+                    </div>
+                    <div class="project-desc">
+                        <ul>
+                            <li>Conducted exploratory data analysis on agricultural datasets using Python and Power BI.</li>
+                            <li>Generated insights on crop patterns and yield trends for data-driven recommendations.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Education -->
+                <div class="section-title">🎓 Education</div>
+                <div class="edu-item">
+                    <div class="edu-detail">
+                        <span class="edu-degree">Bachelor of Computer Applications (BCA)</span>
+                        <span class="edu-date">2023 – 2026</span>
+                    </div>
+                    <div class="edu-institute">Teerthanker Mahaveer University</div>
+                    <div style="font-size:0.8rem; margin-top: 0.2rem;">SGPA: 7.46/10</div>
+                </div>
+                <div class="edu-item">
+                    <div class="edu-detail">
+                        <span class="edu-degree">Class XII (HSC)</span>
+                        <span class="edu-date">2021 – 2023</span>
+                    </div>
+                    <div class="edu-institute">R.S.S. Science College, Bihar</div>
+                </div>
+                <div class="edu-item">
+                    <div class="edu-detail">
+                        <span class="edu-degree">Class X (SSC)</span>
+                        <span class="edu-date">2019 – 2020</span>
+                    </div>
+                    <div class="edu-institute">Jauharimal High School, Bihar</div>
+                </div>
+
+                <!-- Declaration -->
+                <div class="declaration">
+                    <i class="fas fa-check-circle" style="margin-right: 6px;"></i> I hereby declare that the information provided is true to the best of my knowledge.
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Dark mode toggle button with JavaScript -->
+    <div class="theme-toggle" id="darkModeToggle">
+        <i class="fas fa-moon" id="themeIcon"></i>
+        <span id="themeText">Dark Mode</span>
+    </div>
+
+    <script>
+        (function() {
+            const toggleBtn = document.getElementById('darkModeToggle');
+            const themeIcon = document.getElementById('themeIcon');
+            const themeText = document.getElementById('themeText');
+            
+            // Check local storage or system preference
+            const storedTheme = localStorage.getItem('resumeTheme');
+            if (storedTheme === 'dark') {
+                document.body.classList.add('dark');
+                themeIcon.className = 'fas fa-sun';
+                themeText.innerText = 'Light Mode';
+            } else if (storedTheme === 'light') {
+                document.body.classList.remove('dark');
+                themeIcon.className = 'fas fa-moon';
+                themeText.innerText = 'Dark Mode';
+            } else {
+                // check system preference
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                if (prefersDark) {
+                    document.body.classList.add('dark');
+                    themeIcon.className = 'fas fa-sun';
+                    themeText.innerText = 'Light Mode';
+                    localStorage.setItem('resumeTheme', 'dark');
+                } else {
+                    document.body.classList.remove('dark');
+                    themeIcon.className = 'fas fa-moon';
+                    themeText.innerText = 'Dark Mode';
+                    localStorage.setItem('resumeTheme', 'light');
+                }
+            }
+            
+            // Toggle function
+            function toggleTheme() {
+                if (document.body.classList.contains('dark')) {
+                    document.body.classList.remove('dark');
+                    themeIcon.className = 'fas fa-moon';
+                    themeText.innerText = 'Dark Mode';
+                    localStorage.setItem('resumeTheme', 'light');
+                } else {
+                    document.body.classList.add('dark');
+                    themeIcon.className = 'fas fa-sun';
+                    themeText.innerText = 'Light Mode';
+                    localStorage.setItem('resumeTheme', 'dark');
+                }
+            }
+            
+            toggleBtn.addEventListener('click', toggleTheme);
+        })();
+    </script>
+</body>
+</html>
